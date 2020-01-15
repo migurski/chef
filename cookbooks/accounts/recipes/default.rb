@@ -107,6 +107,3 @@ group "adm" do
   action :modify
   members administrators.sort
 end
-
-# Required account for mediawiki cookbook
-user "wiki"

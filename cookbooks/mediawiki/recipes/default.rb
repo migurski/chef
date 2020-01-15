@@ -17,9 +17,6 @@
 # limitations under the License.
 #
 
-include_recipe "apt"
-include_recipe "accounts"
-include_recipe "munin"
 include_recipe "memcached"
 include_recipe "apache"
 include_recipe "mysql"
