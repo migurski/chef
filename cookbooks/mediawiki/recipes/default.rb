@@ -17,22 +17,12 @@
 # limitations under the License.
 #
 
+include_recipe "apt"
+include_recipe "accounts"
 include_recipe "memcached"
 include_recipe "apache"
 include_recipe "mysql"
 include_recipe "git"
-
-# Mediawiki Parsoid package is available from wikimedia.org repositories,
-# more information at https://www.mediawiki.org/wiki/Parsoid/Setup#Ubuntu_/_Debian
-apt_repository "mediawiki" do
-  uri           "https://releases.wikimedia.org/debian"
-  distribution  "jessie-mediawiki"
-  components    ["main"]
-  key           "AF380A3036A03444"
-  keyserver     "keyserver.ubuntu.com"
-end
-
-user "wiki"
 
 # Mediawiki Base Requirements
 package %w[
