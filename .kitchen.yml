@@ -84,3 +84,7 @@ suites:
   - name: tools
     run_list:
       - recipe[tools::default]
+  - name: wiki
+    run_list:
+      - recipe[wiki]
+      - role[wiki]
