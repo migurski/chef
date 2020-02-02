@@ -17,8 +17,6 @@
 # limitations under the License.
 #
 
-apt_update 'update'
-
 package %w[
   apt
   apt-transport-https
