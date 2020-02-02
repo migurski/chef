@@ -13,6 +13,9 @@ jobs:
     - name: "Apt Cookbook"
       script:
       - kitchen test apt-ubuntu-1804
+    - name: "Wiki Cookbook"
+      script:
+      - kitchen test wiki-ubuntu-1804
 
 # safelist
 branches:
