@@ -13,3 +13,9 @@ jobs:
     - name: "Apt Cookbook"
       script:
       - kitchen test apt-ubuntu-1804
+
+# safelist
+branches:
+  only:
+  - master
+  - migurski/extend-travis
