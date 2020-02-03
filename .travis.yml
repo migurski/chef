@@ -1,5 +1,15 @@
 sudo: false
 language: ruby
 cache: bundler
-script:
-  - bundle exec cookstyle -f fuubar
+services:
+  - docker
+before_script:
+  - gem install kitchen kitchen-dokken
+jobs:
+  include:
+    - name: "Cookstyle"
+      script:
+      - bundle exec cookstyle -f fuubar
+    - name: "Apt Cookbook"
+      script:
+      - kitchen test apt-ubuntu-1804
