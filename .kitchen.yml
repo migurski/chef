@@ -1,18 +1,35 @@
 ---
 driver:
-  name: vagrant
+  name: dokken
   provision: true
   vagrantfiles:
     - .kitchen.provision.rb
 
 provisioner:
-  name: chef_zero
+  name: dokken
   product_name: chef
   product_version: 14
   data_bags_path: test/data_bags
+  chef_license: accept
 
 platforms:
+  # Ubuntu 18.04 is what’s used on the live OSM servers,
+  # according to https://hardware.openstreetmap.org/
   - name: ubuntu-18.04
+    driver:
+      image: dokken/ubuntu-18.04
+      # Docker and SystemD need full capabilities granted in privileged mode
+      privileged: true
+      # Run SystemD init to allow services like MySQL, etc. to function
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        # Help APT find its required sources on first run
+        - RUN /usr/bin/apt-get update
+        # prevent APT from deleting the APT folder
+        - RUN rm /etc/apt/apt.conf.d/docker-clean
+
+transport:
+  name: dokken
 
 suites:
   - name: accounts
