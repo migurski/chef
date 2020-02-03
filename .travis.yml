@@ -16,9 +16,3 @@ jobs:
     - name: "Wiki Cookbook"
       script:
       - kitchen test wiki-ubuntu-1804
-
-# safelist
-branches:
-  only:
-  - master
-  - migurski/extend-travis
